@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Weather App</title>
+</head>
+<body>
+    <h1>Weather in {{ city }}</h1>
+    <form method="get">
+        <input type="text" name="city" placeholder="Enter city" value="{{ city }}">
+        <button type="submit">Get Weather</button>
+    </form>
+
+    {% if weather.cod == 200 %}
+    <h2>Temperature: {{ weather.main.temp }}°C</h2>
+    <h3>{{ weather.weather.0.description }}</h3>
+    <p>Humidity: {{ weather.main.humidity }}%</p>
+    <p>Wind Speed: {{ weather.wind.speed }} m/s</p>
+    {% else %}
+    <p>{{ weather.message }}</p>
+    {% endif %}
+</body>
+</html>
